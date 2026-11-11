@@ -1,0 +1,577 @@
+/* Layout & Header Aplikasi */
+.app-layout { max-width: 1200px; margin: 0 auto; padding: 24px; font-family: system-ui, sans-serif; }
+.main-header { text-align: center; margin-bottom: 24px; }
+.main-content { margin-top: 24px; }
+
+.tab-bar { display: inline-flex; gap: 8px; background: #e2e8f0; padding: 6px; border-radius: 12px; margin-top: 14px; }
+.tab-btn {
+  padding: 10px 22px; border: none; background: transparent;
+  font-size: 16px; font-weight: 700; color: #64748b;
+  border-radius: 8px; cursor: pointer; transition: all 0.2s;
+}
+.tab-btn.active { background: #ffffff; color: #2563eb; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+
+/* News Toolbar & Refresh */
+.news-container { width: 100%; }
+.news-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.btn-refresh { background: #2563eb; color: #fff; border: none; border-radius: 8px; padding: 10px 18px; font-weight: 700; cursor: pointer; }
+.btn-refresh:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Status Box: Spinner & Error */
+.spinner-box { text-align: center; padding: 48px; color: #64748b; }
+.css-spinner {
+  width: 44px; height: 44px; border: 4px solid #e2e8f0;
+  border-top-color: #2563eb; border-radius: 50%;
+  animation: spin 0.9s linear infinite; margin: 0 auto 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.error-banner { background: #fef2f2; border: 1.5px solid #ef4444; color: #991b1b; padding: 20px; border-radius: 12px; text-align: center; }
+.error-banner button { margin-top: 12px; background: #dc2626; color: #fff; border: none; border-radius: 6px; padding: 8px 16px; cursor: pointer; }
+
+/* News Grid & Kartu Berita */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+.news-card {
+  background: #fff; border: 1.5px solid #e2e8f0; border-radius: 16px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+.news-thumb-wrapper { position: relative; width: 100%; height: 180px; }
+.news-thumb { width: 100%; height: 100%; object-fit: cover; }
+.news-category-badge {
+  position: absolute; bottom: 12px; left: 12px;
+  background: rgba(37, 99, 235, 0.9); color: white;
+  padding: 4px 10px; border-radius: 6px; font-size: 12px;
+  font-weight: 700; text-transform: uppercase;
+}
+.news-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.news-headline { font-size: 17px; font-weight: 700; color: #1e293b; line-height: 1.4; margin-bottom: 12px; }
+.news-meta { margin-top: auto; display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #94a3b8; }
+.news-link { color: #2563eb; text-decoration: none; font-weight: 700; }
+
+/* =================================
+   TEAM DIRECTORY - DAFTAR ANGGOTA
+================================= */
+
+.directory-container {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 5px 10px;
+}
+
+.directory-title {
+  text-align: center;
+  font-size: 20px;
+  color: #172033;
+  margin-bottom: 20px;
+}
+
+/* Statistik anggota */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto;
+}
+
+.stat-box {
+  flex: 1;
+  max-width: 180px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.stat-num {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0284c7;
+}
+
+.stat-num.online {
+  color: #16a34a;
+}
+
+.stat-num.offline {
+  color: #64748b;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Form pencarian */
+.search-input {
+  display: block;
+  width: 55%;
+  margin: 15px auto 8px;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  background: white;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14,165,233,0.1);
+}
+
+/* Grid anggota tim */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+  align-items: stretch;
+}
+
+/* Kondisi tidak ada anggota */
+.empty-state {
+  grid-column: 1 / -1;
+  background: white;
+  padding: 25px;
+  text-align: center;
+  border-radius: 10px;
+  color: #64748b;
+}
+
+/* Responsive tablet */
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Responsive HP */
+@media (max-width: 550px) {
+  .directory-container {
+    padding: 5px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-bar {
+    gap: 6px;
+  }
+
+  .stat-box {
+    padding: 10px 5px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+}
+
+/* =================================
+   FORM TAMBAH ANGGOTA TIM
+================================= */
+
+.add-member-form {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 20px 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+}
+
+.form-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #172033;
+  margin-bottom: 15px;
+}
+
+.form-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  min-width: 0;
+  height: 38px;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 12px;
+  background: #ffffff;
+  color: #334155;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-submit {
+  height: 38px;
+  padding: 0 15px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background: #1d4ed8;
+}
+
+/* Pesan validasi */
+.input-error {
+  border-color: #ef4444 !important;
+}
+
+.error-text {
+  color: #dc2626;
+  font-size: 10px;
+}
+
+/* Tampilan tablet dan HP */
+@media (max-width: 768px) {
+  .form-row {
+    flex-wrap: wrap;
+  }
+
+  .form-group {
+    flex: 1 1 45%;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-group {
+    flex: 1 1 100%;
+  }
+}
+
+/* ===================================
+   FINAL OVERRIDE - MENYESUAIKAN GAMBAR 1
+=================================== */
+
+.app-layout {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 30px 35px;
+  font-family: Arial, sans-serif;
+}
+
+.main-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.main-header h1 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #172033;
+}
+
+.main-header p {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 7px;
+}
+
+.main-content {
+  width: 100%;
+  margin: 20px auto 0;
+}
+
+/* Judul anggota */
+.directory-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.directory-title {
+  display: none;
+}
+
+/* Statistik */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px auto;
+}
+
+.stat-box {
+  width: 137px;
+  max-width: 137px;
+  padding: 7px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  border-radius: 9px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.04);
+}
+
+.stat-num {
+  font-size: 19px;
+}
+
+.stat-label {
+  font-size: 10px;
+}
+
+/* Form tambah anggota */
+.add-member-form {
+  width: 100%;
+  padding: 13px 15px;
+  margin: 8px 0 6px;
+  border-radius: 11px;
+  background: #fff;
+}
+
+.form-title {
+  font-size: 13px;
+  margin-bottom: 9px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.form-group {
+  min-width: 0;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 10px;
+}
+
+.form-group input,
+.form-group select {
+  height: 31px;
+  font-size: 10px;
+  padding: 5px 8px;
+}
+
+.btn-submit {
+  height: 31px;
+  font-size: 10px;
+  padding: 0 12px;
+}
+
+/* Pencarian */
+.search-input {
+  width: 55%;
+  height: 34px;
+  margin: 7px auto;
+  font-size: 11px;
+}
+
+/* Grid anggota */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  margin-top: 7px;
+}
+
+/* Card anggota */
+.team-card {
+  width: 100%;
+  min-width: 0;
+  min-height: 165px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.team-card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+/* Foto lingkaran */
+.card-avatar {
+  display: block;
+  width: 65px;
+  height: 65px;
+  min-width: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+  margin: 0 auto 7px;
+}
+
+.card-info {
+  width: 100%;
+}
+
+.card-name {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.card-role {
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.card-badges {
+  gap: 4px;
+  margin: 5px 0 8px;
+}
+
+.badge {
+  font-size: 9px;
+  padding: 3px 7px;
+}
+
+.badge-stars {
+  font-size: 10px;
+}
+
+/* Tombol kartu */
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.btn-star,
+.btn-status-toggle {
+  font-size: 9px;
+  padding: 5px 7px;
+  border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .app-layout {
+    padding: 20px 12px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-bar {
+    gap: 5px;
+  }
+}
+
+/* PILIHAN SUMBER BERITA */
+.source-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.source-btn {
+  padding: 10px 22px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #64748b;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.source-btn:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.source-btn.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+  box-shadow: 0 3px 8px rgba(37,99,235,0.2);
+}
+
+.news-toolbar h2 {
+  font-size: 22px;
+  color: #172033;
+  margin-bottom: 5px;
+}
+
+.news-toolbar p {
+  font-size: 13px;
+  color: #64748b;
+}
+
+@media (max-width: 600px) {
+  .news-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .source-selector {
+    width: 100%;
+  }
+
+  .source-btn {
+    flex: 1;
+  }
+}
