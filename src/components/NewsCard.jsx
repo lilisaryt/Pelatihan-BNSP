@@ -13,14 +13,28 @@ function NewsCard({ title, image, category, date, link }) {
             e.target.src = fallback;
           }}
         />
-        {category && <span className="news-category-badge">{category}</span>}
+
+        {category && (
+          <span className="news-category-badge">
+            {category}
+          </span>
+        )}
       </div>
 
       <div className="news-body">
-        <h3 className="news-headline" title={title}>{title}</h3>
+        <h3 className="news-headline" title={title}>
+          {title}
+        </h3>
+
         <div className="news-meta">
-          <span className="news-date">🗓️ {date}</span>
-          <a href={link} target="_blank" rel="noreferrer" className="news-link">
+          <span className="news-date">📅 {date}</span>
+
+          <a
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            className="news-link"
+          >
             Baca →
           </a>
         </div>

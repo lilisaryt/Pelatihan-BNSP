@@ -1,35 +1,6 @@
-
-/* RESET CSS */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  min-height: 100%;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f1f5f9;
-  color: #172033;
-}
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-}
-
-button, input, select {
-  font-family: inherit;
-}
-
-button {
-  cursor: pointer;
-}
+/* Entry Tailwind CSS v4 — tanpa preflight.
+   Preflight (reset CSS global) sengaja tidak diimpor supaya styling lama
+   di App.css (header aplikasi & tab Berita Terkini) tetap tampil sama. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);

@@ -14,8 +14,8 @@ function AddMemberForm({ onAddMember }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
   const handleSubmit = (e) => {
@@ -24,7 +24,7 @@ function AddMemberForm({ onAddMember }) {
 
     if (!result.success) {
       const fieldErrors = {};
-      result.error.issues.forEach(issue => {
+      result.error.issues.forEach((issue) => {
         fieldErrors[issue.path[0]] = issue.message;
       });
       setErrors(fieldErrors);
@@ -44,7 +44,7 @@ function AddMemberForm({ onAddMember }) {
           <label>Nama Lengkap</label>
           <input
             name="name"
-            placeholder="Contoh: Bima Wijaya"
+            placeholder="Contoh: Rina Wijaya"
             value={formData.name}
             onChange={handleChange}
             className={errors.name ? 'input-error' : ''}
@@ -56,7 +56,7 @@ function AddMemberForm({ onAddMember }) {
           <label>Email Perusahaan</label>
           <input
             name="email"
-            placeholder="Contoh: bima@perusahaan.com"
+            placeholder="Contoh: rina@perusahaan.com"
             value={formData.email}
             onChange={handleChange}
             className={errors.email ? 'input-error' : ''}
@@ -80,7 +80,9 @@ function AddMemberForm({ onAddMember }) {
           {errors.role && <span className="error-text">⚠️ {errors.role}</span>}
         </div>
 
-        <button type="submit" className="btn-submit">+ Tambah Anggota</button>
+        <button type="submit" className="btn-submit">
+          + Tambah Anggota
+        </button>
       </div>
     </form>
   );

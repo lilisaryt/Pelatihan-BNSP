@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function TeamCard({
   id,
   name,
@@ -43,6 +45,11 @@ function TeamCard({
             Ubah ke {status === 'Online' ? 'Offline' : 'Online'}
           </button>
         </div>
+
+        {/* Link ke halaman detail */}
+        <Link to={`/member/${id}`} className="btn-detail">
+          Lihat Detail
+        </Link>
       </div>
     </div>
   );
